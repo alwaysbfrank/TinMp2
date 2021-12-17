@@ -33,4 +33,9 @@ public class FilmController {
     public List<Film> deleteFilm(@PathVariable Integer id) {
         return service.deleteFilm(id);
     }
+
+    @GetMapping("/{id}")
+    public FilmDetails getFilm(@PathVariable Integer id) {
+        return service.getDetails(id);
+    }
 }

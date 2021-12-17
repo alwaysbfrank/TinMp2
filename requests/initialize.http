@@ -1,0 +1,79 @@
+# curl -X 'POST'
+#  'http://localhost:8080/venues'
+#  -H 'accept: */*'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "name": "Kinoteka 1",
+#  "capacity": 50
+#}'
+POST http://localhost:8080/venues
+accept: */*
+Content-Type: application/json
+
+{
+  "name": "Kinoteka 1",
+  "capacity": 50
+}
+
+###
+
+# curl -X 'POST'
+#  'http://localhost:8080/films'
+#  -H 'accept: */*'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "title": "Robocop",
+#  "director": "Jan Kowalski",
+#  "length": 100
+#}'
+POST http://localhost:8080/films
+accept: */*
+Content-Type: application/json
+
+{
+  "title": "Robocop",
+  "director": "Jan Kowalski",
+  "length": 100
+}
+
+###
+
+# curl -X 'POST'
+#  'http://localhost:8080/screenings'
+#  -H 'accept: */*'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "film": {
+#    "id": 2
+#  },
+#  "venue": {
+#    "id": 1
+#  },
+#  "start": "2021-12-17T18:32:17.481Z",
+#  "guests": "Jan Kowalski"
+#}'
+POST http://localhost:8080/screenings
+accept: */*
+Content-Type: application/json
+
+{
+  "film": {
+    "id": 2
+  },
+  "venue": {
+    "id": 1
+  },
+  "start": "2021-12-17T18:32:17.481Z",
+  "guests": "Jan Kowalski"
+}
+
+###
+
+# curl -X 'GET'
+#  'http://localhost:8080/films/2'
+#  -H 'accept: */*'
+GET http://localhost:8080/films/2
+accept: */*
+
+###
+

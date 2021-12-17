@@ -1,15 +1,17 @@
 package edu.matera.tin.mp2.venues;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import edu.matera.tin.mp2.screenings.PersistentScreening;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersistentVenue {
@@ -20,4 +22,7 @@ public class PersistentVenue {
     private String name;
 
     private Integer capacity;
+
+    @OneToMany(mappedBy = "venue")
+    private Set<PersistentScreening> screenings;
 }

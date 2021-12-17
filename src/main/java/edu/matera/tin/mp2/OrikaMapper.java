@@ -2,6 +2,8 @@ package edu.matera.tin.mp2;
 
 import edu.matera.tin.mp2.films.Film;
 import edu.matera.tin.mp2.films.PersistentFilm;
+import edu.matera.tin.mp2.screenings.PersistentScreening;
+import edu.matera.tin.mp2.screenings.Screening;
 import edu.matera.tin.mp2.venues.PersistentVenue;
 import edu.matera.tin.mp2.venues.Venue;
 import ma.glasnost.orika.MapperFactory;
@@ -19,6 +21,8 @@ public class OrikaMapper {
         mapperFactory.classMap(PersistentFilm.class, Film.class);
         mapperFactory.classMap(Venue.class, PersistentVenue.class);
         mapperFactory.classMap(PersistentVenue.class, Venue.class);
+        mapperFactory.classMap(Screening.class, PersistentScreening.class);
+        mapperFactory.classMap(PersistentScreening.class, Screening.class);
     }
 
     public <Source, Result> Result map(Source src, Class<Source> srcClass, Class<Result> resultClass) {
@@ -39,5 +43,13 @@ public class OrikaMapper {
 
     public PersistentVenue map(Venue venue) {
         return map(venue, Venue.class, PersistentVenue.class);
+    }
+
+    public Screening map(PersistentScreening persistentScreening) {
+        return map(persistentScreening, PersistentScreening.class, Screening.class);
+    }
+
+    public PersistentScreening map(Screening screening) {
+        return map(screening, Screening.class, PersistentScreening.class);
     }
 }
