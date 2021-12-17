@@ -1,5 +1,6 @@
 package edu.matera.tin.mp2.films;
 
+import edu.matera.tin.mp2.OrikaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FilmService {
 
-    private final FilmMapper mapper;
+    private final OrikaMapper mapper;
     private final FilmRepository repository;
 
     public List<Film> getAllFilms() {
@@ -27,8 +28,8 @@ public class FilmService {
     }
 
     private Film saveFilm(NewFilm editedFilm) {
-        var forPersistance = mapper.map(editedFilm);
-        var edited = repository.save(forPersistance);
+        var forPersistence = mapper.map(editedFilm);
+        var edited = repository.save(forPersistence);
         return mapper.map(edited);
     }
 
