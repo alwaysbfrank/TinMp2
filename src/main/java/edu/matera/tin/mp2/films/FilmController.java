@@ -10,22 +10,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FilmController {
 
-    private final FilmService repository;
+    private final FilmService service;
 
     @GetMapping
     public List<Film> getFilms() {
-        return repository.getAllFilms();
+        return service.getAllFilms();
     }
 
     @PostMapping
     public Film createNewFilm(@RequestBody NewFilm film) {
-        return repository.createNewFilm(film);
+        return service.createNewFilm(film);
     }
 
     @PutMapping("/{id}")
     public Film editFilm(@PathVariable Integer id,
                          @RequestBody NewFilm film) {
         film.setId(id);
-        return repository.editFilm(id, film);
+        return service.editFilm(id, film);
+    }
+
+    @DeleteMapping("/{id}")
+    public List<Film> deleteFilm(@PathVariable Integer id) {
+        return service.deleteFilm(id);
     }
 }

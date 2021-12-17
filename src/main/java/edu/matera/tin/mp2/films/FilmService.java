@@ -18,15 +18,22 @@ public class FilmService {
     }
 
     public Film createNewFilm(NewFilm newFilm) {
-        var forPersistance = mapper.map(newFilm);
-        var created = repository.save(forPersistance);
-        return mapper.map(created);
+        return saveFilm(newFilm);
     }
 
     public Film editFilm(Integer id, NewFilm editedFilm) {
         editedFilm.setId(id);
+        return saveFilm(editedFilm);
+    }
+
+    private Film saveFilm(NewFilm editedFilm) {
         var forPersistance = mapper.map(editedFilm);
         var edited = repository.save(forPersistance);
         return mapper.map(edited);
+    }
+
+    public List<Film> deleteFilm(Integer id) {
+        repository.findById(id).ifPresent(repository::delete);
+        return getAllFilms();
     }
 }
