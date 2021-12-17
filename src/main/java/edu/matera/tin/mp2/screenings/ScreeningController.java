@@ -36,4 +36,9 @@ public class ScreeningController {
     public List<Screening> deleteScreening(@PathVariable Integer id) {
         return service.deleteScreening(id);
     }
+
+    @GetMapping("/{id}")
+    public Screening getScreening(@PathVariable Integer id) {
+        return service.get(id);
+    }
 }

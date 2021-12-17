@@ -1,5 +1,6 @@
 package edu.matera.tin.mp2.screenings;
 
+import edu.matera.tin.mp2.NoElementFoundException;
 import edu.matera.tin.mp2.OrikaMapper;
 import edu.matera.tin.mp2.venues.NewVenue;
 import edu.matera.tin.mp2.venues.Venue;
@@ -39,5 +40,9 @@ public class ScreeningService {
     public List<Screening> deleteScreening(Integer id) {
         repository.findById(id).ifPresent(repository::delete);
         return getAllScreenings();
+    }
+
+    public Screening get(Integer id) {
+        return repository.findById(id).map(mapper::map).orElseThrow(NoElementFoundException::new);
     }
 }

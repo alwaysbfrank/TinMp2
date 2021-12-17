@@ -1,7 +1,10 @@
 package edu.matera.tin.mp2.venues;
 
+import edu.matera.tin.mp2.NoElementFoundException;
 import edu.matera.tin.mp2.OrikaMapper;
 import edu.matera.tin.mp2.films.Film;
+import edu.matera.tin.mp2.films.FilmDetails;
+import edu.matera.tin.mp2.films.FilmScreening;
 import edu.matera.tin.mp2.films.NewFilm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,5 +41,17 @@ public class VenueService {
     public List<Venue> deleteVenue(Integer id) {
         repository.findById(id).ifPresent(repository::delete);
         return getAllVenues();
+    }
+
+    public VenueDetails getDetails(Integer id) {
+        var found = repository.findById(id).orElseThrow(NoElementFoundException::new);
+
+        var venue = mapper.map(found);
+        var screenings = found.getScreenings().stream().map(VenueScreening::from).collect(Collectors.toList());
+
+        return VenueDetails.builder()
+                .venue(venue)
+                .screenings(screenings)
+                .build();
     }
 }

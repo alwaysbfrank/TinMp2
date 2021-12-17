@@ -24,7 +24,7 @@ public class VenueController {
 
     @PutMapping("/{id}")
     public Venue editVenue(@PathVariable Integer id,
-                         @RequestBody NewVenue venue) {
+                           @RequestBody NewVenue venue) {
         venue.setId(id);
         return service.editVenue(id, venue);
     }
@@ -32,5 +32,10 @@ public class VenueController {
     @DeleteMapping("/{id}")
     public List<Venue> deleteVenue(@PathVariable Integer id) {
         return service.deleteVenue(id);
+    }
+
+    @GetMapping("/{id}")
+    public VenueDetails getVenue(@PathVariable Integer id) {
+        return service.getDetails(id);
     }
 }
