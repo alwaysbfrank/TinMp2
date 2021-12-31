@@ -43,7 +43,7 @@ public class FilmService {
         var found = repository.findById(id).orElseThrow(NoElementFoundException::new);
 
         var film = mapper.map(found);
-        var screenings = found.getScreenings().stream().map(FilmScreening::from).collect(Collectors.toList());
+        var screenings = found.getScreenings().stream().map(mapper::mapToFilmScreening).collect(Collectors.toList());
 
         return FilmDetails.builder()
                 .film(film)

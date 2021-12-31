@@ -1,6 +1,7 @@
 package edu.matera.tin.mp2;
 
 import edu.matera.tin.mp2.films.Film;
+import edu.matera.tin.mp2.films.FilmScreening;
 import edu.matera.tin.mp2.films.PersistentFilm;
 import edu.matera.tin.mp2.screenings.PersistentScreening;
 import edu.matera.tin.mp2.screenings.Screening;
@@ -23,6 +24,7 @@ public class OrikaMapper {
         mapperFactory.classMap(PersistentVenue.class, Venue.class);
         mapperFactory.classMap(Screening.class, PersistentScreening.class);
         mapperFactory.classMap(PersistentScreening.class, Screening.class);
+        mapperFactory.classMap(PersistentScreening.class, FilmScreening.class);
     }
 
     public <Source, Result> Result map(Source src, Class<Source> srcClass, Class<Result> resultClass) {
@@ -51,5 +53,9 @@ public class OrikaMapper {
 
     public PersistentScreening map(Screening screening) {
         return map(screening, Screening.class, PersistentScreening.class);
+    }
+
+    public FilmScreening mapToFilmScreening(PersistentScreening persistentScreening) {
+        return map(persistentScreening, PersistentScreening.class, FilmScreening.class);
     }
 }

@@ -1,6 +1,7 @@
 package edu.matera.tin.mp2.films;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/films")
 @RequiredArgsConstructor
+@Slf4j
 public class FilmController {
 
     private final FilmService service;
@@ -19,12 +21,14 @@ public class FilmController {
 
     @PostMapping
     public Film createNewFilm(@RequestBody NewFilm film) {
+        log.info("Received request to create film {}", film);
         return service.createNewFilm(film);
     }
 
     @PutMapping("/{id}")
     public Film editFilm(@PathVariable Integer id,
                          @RequestBody NewFilm film) {
+        log.info("Received request to edit film {}:{}", id, film);
         film.setId(id);
         return service.editFilm(id, film);
     }

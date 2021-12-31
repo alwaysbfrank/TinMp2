@@ -1,6 +1,7 @@
 package edu.matera.tin.mp2.films;
 
 import edu.matera.tin.mp2.screenings.PersistentScreening;
+import edu.matera.tin.mp2.venues.Venue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,15 +17,7 @@ public class FilmScreening {
 
     private LocalDateTime start;
 
-    private String venue;
+    private Venue venue;
 
     private String guests;
-
-    public static FilmScreening from(PersistentScreening persistentScreening) {
-        return FilmScreening.builder()
-                .start(persistentScreening.getStart())
-                .guests(persistentScreening.getGuests())
-                .venue(persistentScreening.getVenue().getName())
-                .build();
-    }
 }
