@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,14 +21,14 @@ public class FilmController {
     }
 
     @PostMapping
-    public Film createNewFilm(@RequestBody NewFilm film) {
+    public Film createNewFilm(@RequestBody @Valid NewFilm film) {
         log.info("Received request to create film {}", film);
         return service.createNewFilm(film);
     }
 
     @PutMapping("/{id}")
     public Film editFilm(@PathVariable Integer id,
-                         @RequestBody NewFilm film) {
+                         @RequestBody @Valid NewFilm film) {
         log.info("Received request to edit film {}:{}", id, film);
         film.setId(id);
         return service.editFilm(id, film);
