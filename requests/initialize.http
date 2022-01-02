@@ -69,12 +69,8 @@ accept: */*
 Content-Type: application/json
 
 {
-  "film": {
-    "id": 2
-  },
-  "venue": {
-    "id": 1
-  },
+  "filmId": 2,
+  "venueId": 1,
   "start": "2021-12-17T18:32:17.481Z",
   "guests": "Jan Kowalski"
 }
