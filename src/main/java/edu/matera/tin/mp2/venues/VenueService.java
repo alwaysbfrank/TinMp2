@@ -2,10 +2,6 @@ package edu.matera.tin.mp2.venues;
 
 import edu.matera.tin.mp2.NoElementFoundException;
 import edu.matera.tin.mp2.OrikaMapper;
-import edu.matera.tin.mp2.films.Film;
-import edu.matera.tin.mp2.films.FilmDetails;
-import edu.matera.tin.mp2.films.FilmScreening;
-import edu.matera.tin.mp2.films.NewFilm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

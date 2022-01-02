@@ -3,6 +3,7 @@ package edu.matera.tin.mp2.venues;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,13 +19,13 @@ public class VenueController {
     }
 
     @PostMapping
-    public Venue createNewVenue(@RequestBody NewVenue venue) {
+    public Venue createNewVenue(@RequestBody @Valid NewVenue venue) {
         return service.createNewVenue(venue);
     }
 
     @PutMapping("/{id}")
     public Venue editVenue(@PathVariable Integer id,
-                           @RequestBody NewVenue venue) {
+                           @RequestBody @Valid NewVenue venue) {
         venue.setId(id);
         return service.editVenue(id, venue);
     }
