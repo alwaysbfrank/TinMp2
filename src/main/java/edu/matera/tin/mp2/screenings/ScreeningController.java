@@ -4,6 +4,7 @@ import edu.matera.tin.mp2.venues.NewVenue;
 import edu.matera.tin.mp2.venues.Venue;
 import edu.matera.tin.mp2.venues.VenueService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ScreeningController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Screening createNewScreening(@RequestBody NewScreening screening) {
         return service.createNewScreening(screening);
     }

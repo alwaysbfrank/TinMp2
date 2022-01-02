@@ -7,6 +7,7 @@ import edu.matera.tin.mp2.screenings.PersistentScreening;
 import edu.matera.tin.mp2.screenings.Screening;
 import edu.matera.tin.mp2.venues.PersistentVenue;
 import edu.matera.tin.mp2.venues.Venue;
+import edu.matera.tin.mp2.venues.VenueScreening;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ public class OrikaMapper {
         mapperFactory.classMap(Screening.class, PersistentScreening.class);
         mapperFactory.classMap(PersistentScreening.class, Screening.class);
         mapperFactory.classMap(PersistentScreening.class, FilmScreening.class);
+        mapperFactory.classMap(PersistentScreening.class, VenueScreening.class);
     }
 
     public <Source, Result> Result map(Source src, Class<Source> srcClass, Class<Result> resultClass) {
@@ -57,5 +59,9 @@ public class OrikaMapper {
 
     public FilmScreening mapToFilmScreening(PersistentScreening persistentScreening) {
         return map(persistentScreening, PersistentScreening.class, FilmScreening.class);
+    }
+
+    public VenueScreening mapToVenueScreeening(PersistentScreening persistentScreening) {
+        return map(persistentScreening, PersistentScreening.class, VenueScreening.class);
     }
 }

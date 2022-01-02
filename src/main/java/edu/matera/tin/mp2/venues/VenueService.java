@@ -43,7 +43,7 @@ public class VenueService {
         var found = repository.findById(id).orElseThrow(NoElementFoundException::new);
 
         var venue = mapper.map(found);
-        var screenings = found.getScreenings().stream().map(VenueScreening::from).collect(Collectors.toList());
+        var screenings = found.getScreenings().stream().map(mapper::mapToVenueScreeening).collect(Collectors.toList());
 
         return VenueDetails.builder()
                 .venue(venue)

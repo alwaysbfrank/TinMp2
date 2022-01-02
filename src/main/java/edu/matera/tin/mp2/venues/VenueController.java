@@ -1,6 +1,7 @@
 package edu.matera.tin.mp2.venues;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ public class VenueController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Venue createNewVenue(@RequestBody @Valid NewVenue venue) {
         return service.createNewVenue(venue);
     }

@@ -2,6 +2,7 @@ package edu.matera.tin.mp2.films;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ public class FilmController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Film createNewFilm(@RequestBody @Valid NewFilm film) {
         log.info("Received request to create film {}", film);
         return service.createNewFilm(film);

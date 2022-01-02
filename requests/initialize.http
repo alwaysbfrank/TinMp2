@@ -15,6 +15,12 @@ Content-Type: application/json
   "capacity": 50
 }
 
+> {%
+ client.test("Venue got created", function() {
+     client.assert(response.status === 201, "Error while creating new venue");
+ });
+ %}
+
 ###
 
 # curl -X 'POST'
@@ -35,6 +41,12 @@ Content-Type: application/json
   "director": "Jan Kowalski",
   "length": 100
 }
+
+> {%
+ client.test("Film got created", function() {
+     client.assert(response.status === 201, "Error while creating new film");
+ });
+ %}
 
 ###
 
@@ -67,6 +79,12 @@ Content-Type: application/json
   "guests": "Jan Kowalski"
 }
 
+> {%
+ client.test("Screening got created", function() {
+     client.assert(response.status === 201, "Error while creating new screening");
+ });
+ %}
+
 ###
 
 # curl -X 'GET'
@@ -74,6 +92,12 @@ Content-Type: application/json
 #  -H 'accept: */*'
 GET http://localhost:8080/films/2
 accept: */*
+
+> {%
+ client.test("Got films", function() {
+     client.assert(response.status === 200, "Error while getting all films");
+ });
+ %}
 
 ###
 

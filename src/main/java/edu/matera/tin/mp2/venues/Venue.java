@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -18,6 +19,6 @@ public class Venue {
     private String name;
 
     @NotNull(message = "Pojemność sali nie może być pusta")
-    @Length(min = 1, message = "Pojemność sali musi być większa od 0")
+    @Min(value = 1, message = "Pojemność sali musi być większa od 0")
     private Integer capacity;
 }
