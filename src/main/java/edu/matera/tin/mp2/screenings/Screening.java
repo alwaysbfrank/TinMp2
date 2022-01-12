@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,6 +20,7 @@ public class Screening {
 
     private Venue venue;
 
+    @NotNull(message = "Data nie może być pusta")
     private LocalDateTime start;
 
     private String guests;

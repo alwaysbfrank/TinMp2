@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,13 +24,13 @@ public class ScreeningController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Screening createNewScreening(@RequestBody NewScreening screening) {
+    public Screening createNewScreening(@RequestBody @Valid NewScreening screening) {
         return service.createNewScreening(screening);
     }
 
     @PutMapping("/{id}")
     public Screening editScreening(@PathVariable Integer id,
-                         @RequestBody NewScreening screening) {
+                         @RequestBody @Valid NewScreening screening) {
         screening.setId(id);
         return service.editScreening(id, screening);
     }
