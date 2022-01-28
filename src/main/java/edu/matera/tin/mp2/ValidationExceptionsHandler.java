@@ -19,7 +19,7 @@ public class ValidationExceptionsHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ValidationErrorMessage handleValidationExceptions(
             MethodArgumentNotValidException ex) {
-        var message = ex.getBindingResult().getAllErrors().stream().map(ObjectError::getDefaultMessage).collect(Collectors.joining(", "));
+        var message = ex.getBindingResult().getAllErrors().stream().map(ObjectError::getDefaultMessage).collect(Collectors.joining(","));
         var fieldNames = ex.getBindingResult().getAllErrors().stream().map(ValidationExceptionsHandler::getFieldName).distinct().collect(Collectors.toList());
         return new ValidationErrorMessage(message, fieldNames);
     }

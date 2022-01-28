@@ -14,11 +14,11 @@ import javax.validation.constraints.NotNull;
 public class Venue {
     private Integer id;
 
-    @NotNull(message = "Nazwa sali nie może być pusta")
-    @Length(min = 2, max = 60, message = "Nazwa sali musi mieć między 2 a 60 znaków")
+    @NotNull(message = "0010")
+    @Length(min = 2, max = 60, message = "0011")
     private String name;
 
-    @NotNull(message = "Pojemność sali nie może być pusta")
-    @Min(value = 1, message = "Pojemność sali musi być większa od 0")
+    @NotNull(message = "0012")
+    @Min(value = 1, message = "0013")
     private Integer capacity;
 }

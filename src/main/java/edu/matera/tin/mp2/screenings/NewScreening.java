@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties({"id", "film", "venue"})
 public class NewScreening extends Screening {
-    @NotNull(message = "Należy wybrać film")
+    @NotNull(message = "0008")
     private Integer filmId;
 
-    @NotNull(message = "Należy wybrać salę")
+    @NotNull(message = "0009")
     private Integer venueId;
 
     public NewScreening(Integer id, LocalDateTime start, String guests, Integer filmId, Integer venueId) {

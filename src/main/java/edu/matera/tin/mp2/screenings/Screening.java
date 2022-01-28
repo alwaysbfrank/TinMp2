@@ -20,8 +20,8 @@ public class Screening {
 
     private Venue venue;
 
-    @NotNull(message = "Data nie może być pusta")
-    @In20thCentury(message = "Seans musi się odbywać w XX wieku")
+    @NotNull(message = "0006")
+    @In20thCentury(message = "0007")
     private LocalDateTime start;
 
     private String guests;

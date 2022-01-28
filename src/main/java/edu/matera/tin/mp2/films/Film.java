@@ -14,15 +14,15 @@ import javax.validation.constraints.Size;
 public class Film {
     private Integer id;
 
-    @NotNull(message = "pole 'tytuł' musi być wypełnione")
-    @Size(min = 2, max = 60, message = "Pole 'tytuł' musi mieć od 2 do 60 znaków")
+    @NotNull(message = "0001")
+    @Size(min = 2, max = 60, message = "0002")
     private String title;
 
-    @NotNull(message = "pole 'reżyser' musi być wypełnione")
-    @Size(min = 2, max = 60, message = "Pole 'reżyser' musi mieć od 2 do 60 znaków")
+    @NotNull(message = "0003")
+    @Size(min = 2, max = 60, message = "0004")
     private String director;
 
-    @NotNull(message = "pole 'długość' musi być wypełnione")
-    @Min(value = 1, message = "długość filmu musi być większa od 0")
+    @NotNull(message = "0005")
+    @Min(value = 1, message = "0005")
     private Integer length;
 }
